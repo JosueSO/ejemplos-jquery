@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paint</title>
+    <script src="jquery-3.1.1.min.js"></script>
+    <style>
+        canvas {
+            background-color: #def;
+            border: solid 1px #aaa;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="480" height="320"></canvas>
+
+    <script>
+        $(function() {
+            var dibujo = $('canvas')[0]
+            var contexto = dibujo.getContext('2d')
+            var mousePress = false
+
+            $('canvas').mousedown(function(e) {
+                mousePress = true
+            })
+
+            $('canvas').mouseup(function(e) {
+                mousePress = false
+            })
+
+            $('canvas').mousemove(function(e) {
+                var xPos = e.pageX - dibujo.offsetLeft
+                var yPos = e.pageY - dibujo.offsetTop
+
+                if(mousePress)
+                    contexto.lineTo(xPos,yPos)
+                else
+                    contexto.moveTo(xPos,yPos)
+                contexto.stroke()
+            })
+        })
+    </script>
+</body>
+</html>

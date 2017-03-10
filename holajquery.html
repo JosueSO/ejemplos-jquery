@@ -7,17 +7,42 @@
     <title>jQuery</title>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="holajquery.js"></script>
+
+    <script>
+        // $(function() {
+        //     $('#boton1').click(function (e) { 
+        //         alert('Hola ' + $(this).text())
+        //     });
+        // })
+
+        // $(function() {
+        //     $('.boton').on('click', function () {
+        //         alert('Hola ' + $(this).text())
+        //     });
+        // })
+
+        $(function() {
+            $('button').on('click', '.boton', {
+                propiedad1 : 'valor1',
+                propiedad2 : 'valor2'
+            }, function (e) {
+                alert(e.data.propiedad1);
+            });
+        })
+    </script>
 </head>
 <body>
     <h1> Hola jQuery </h1>
-
     <p> Parrafo 1 </p>
-    <h2> Encabezado 2 </h2>
+    <button class="boton">Botón 1</button>
 
+    <h2> Encabezado 2 </h2>
     <p> Parrafo 2 </p>
+    <button class="boton">Botón 2</button>
+
     <h3> Encabezado 3 </h3>
-    
-    <p> Parrafo 2 </p>
+    <p> Parrafo 3 </p>
+    <button>Botón 3</button>
 
 </body>
 </html>
